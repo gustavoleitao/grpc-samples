@@ -1,0 +1,5 @@
+# Project exclude paths
+/grpc-api/target/
+/grpc-client/target/
+/grpc-server/target/
+/target/

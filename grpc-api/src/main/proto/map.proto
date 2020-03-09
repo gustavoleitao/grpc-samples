@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "br.ufrn.imd";
+option java_outer_classname = "HelloStreamingProto";
+option objc_class_prefix = "HLWS";
+
+package br.ufrn.imd;
+
+option java_multiple_files = true;
+
+service MapPM {
+
+    rpc readData (DataRequest) returns (stream Data) {}
+
+    rpc updatePolling(stream PollingRequest) returns (stream PollingResponse) {}
+
+}
+
+enum Status {
+    OK = 0;
+    FAIL = 1;
+}
+
+message Data {
+    string tag = 1;
+    string valor = 2;
+}
+
+message DataRequest {
+    string name = 1;
+}
+
+message PollingRequest {
+    string name = 1;
+}
+
+message PollingResponse {
+    Status status = 1;
+}
