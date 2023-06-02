@@ -26,7 +26,7 @@ public class MyGrpcClient {
 
         HelloResponse helloResponse = stub.greeting(
                 HelloRequest.newBuilder()
-                        .setName("Ray")
+                        .setName("TRE")
                         .setAge(18)
                         .setSentiment(Sentiment.HAPPY)
                         .build());

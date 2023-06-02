@@ -16,12 +16,11 @@ public class MapClient {
 
         MapPMGrpc.MapPMStub stub = MapPMGrpc.newStub(channel);
 
-        StreamObserver<PollingRequest> channelToServer = stub.updatePolling(new ResponseObserver("response-observer"));
-
         stub.readData(DataRequest.newBuilder()
                 .setName("client-grpc")
                 .build(), new DataObserver("data-observer"));
 
+        StreamObserver<PollingRequest> channelToServer = stub.updatePolling(new ResponseObserver("response-observer"));
 
         IntStream.rangeClosed(1,10).forEach(index -> {
             System.out.println("Enviando nova mensagem de polling update ao servidor");
