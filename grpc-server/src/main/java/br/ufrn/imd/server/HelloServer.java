@@ -11,10 +11,7 @@ import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 
-/**
- * Created by rayt on 5/16/16.
- */
-public class ExemploServicesServer {
+public class HelloServer {
 
     static public void main(String [] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(8085)

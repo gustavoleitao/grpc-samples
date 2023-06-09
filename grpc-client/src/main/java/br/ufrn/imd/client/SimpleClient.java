@@ -7,14 +7,13 @@ package br.ufrn.imd.client;
 import br.ufrn.imd.GreetingServiceGrpc;
 import br.ufrn.imd.HelloRequest;
 import br.ufrn.imd.HelloResponse;
-import br.ufrn.imd.Sentiment;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
 /**
  * Created by rayt on 5/16/16.
  */
-public class MyGrpcClient {
+public class SimpleClient {
     public static void main(String[] args) throws InterruptedException {
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8085)
@@ -24,12 +23,11 @@ public class MyGrpcClient {
         GreetingServiceGrpc.GreetingServiceBlockingStub stub =
                 GreetingServiceGrpc.newBlockingStub(channel);
 
-        HelloResponse helloResponse = stub.greeting(
-                HelloRequest.newBuilder()
-                        .setName("TRE")
-                        .setAge(18)
-                        .setSentiment(Sentiment.HAPPY)
-                        .build());
+        var request = HelloRequest.newBuilder()
+                .setName("TRE")
+                .build();
+
+        HelloResponse helloResponse = stub.greeting(request);
 
         System.out.println(helloResponse);
 

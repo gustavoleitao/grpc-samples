@@ -1,14 +1,14 @@
 syntax = "proto3";
 
 option java_package = "br.ufrn.imd";
-option java_outer_classname = "HelloStreamingProto";
+option java_outer_classname = "HelloStreaming";
 option objc_class_prefix = "HLWS";
 
 package br.ufrn.imd;
 
 option java_multiple_files = true;
 
-service MapPM {
+service StreamSample {
 
     rpc readData (DataRequest) returns (stream Data) {}
 

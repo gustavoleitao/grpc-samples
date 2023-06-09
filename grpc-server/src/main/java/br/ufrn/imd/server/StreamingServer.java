@@ -8,11 +8,11 @@ import io.grpc.stub.StreamObserver;
 import java.io.IOException;
 
 
-public class MapPmServer {
+public class StreamingServer {
 
     static public void main(String [] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(8085)
-                .addService(new MapServerImpl())
+                .addService(new StreamingSample())
                 .build();
 
         System.out.println("Starting server...");
@@ -21,7 +21,7 @@ public class MapPmServer {
         server.awaitTermination();
     }
 
-    public static class MapServerImpl extends MapPMGrpc.MapPMImplBase{
+    public static class StreamingSample extends StreamSampleGrpc.StreamSampleImplBase {
 
         @Override
         public void readData(DataRequest request, StreamObserver<Data> responseData) {
@@ -50,7 +50,7 @@ public class MapPmServer {
 
         @Override
         public StreamObserver<PollingRequest> updatePolling(StreamObserver<PollingResponse> responsePolling) {
-            return new StreamObserver<PollingRequest>() {
+            return new StreamObserver<>() {
                 @Override
                 public void onNext(PollingRequest pollingRequest) {
                     System.out.println("Updating my request...");
@@ -60,7 +60,7 @@ public class MapPmServer {
                 }
                 @Override
                 public void onError(Throwable throwable) {
-                    System.out.println("Some error happend!");
+                    System.out.println("Some error happened!");
                 }
 
                 @Override

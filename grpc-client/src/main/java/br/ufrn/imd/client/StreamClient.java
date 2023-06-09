@@ -7,14 +7,14 @@ import io.grpc.stub.StreamObserver;
 
 import java.util.stream.IntStream;
 
-public class MapClient {
+public class StreamClient {
 
     public static void main(String[] args) throws InterruptedException {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8085)
                 .usePlaintext()
                 .build();
 
-        MapPMGrpc.MapPMStub stub = MapPMGrpc.newStub(channel);
+        StreamSampleGrpc.StreamSampleStub stub = StreamSampleGrpc.newStub(channel);
 
         stub.readData(DataRequest.newBuilder()
                 .setName("client-grpc")
