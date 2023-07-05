@@ -15,7 +15,7 @@
     </modules>
 
     <properties>
-        <grpc.version>1.12.0</grpc.version>
+        <grpc.version>1.53.0</grpc.version>
         <protoc.version>3.5.1</protoc.version>
         <protobuf.plugin.version>0.6.1</protobuf.plugin.version>
         <os.plugin.version>1.5.0.Final</os.plugin.version>
